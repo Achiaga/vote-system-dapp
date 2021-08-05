@@ -11,7 +11,7 @@ This is a simple example of running a frontend that interacts with an smartcontr
 
 ### Run the Smart Contract (our backend)
 
-1. Run Hardhat (New Tab Terminal)
+1. Run Hardhat *(New Tab Terminal)*
 
 `/vote-system`
 
@@ -19,7 +19,7 @@ This is a simple example of running a frontend that interacts with an smartcontr
 npx hardhat node
 ```
 
-2. Run the smart contract with hardhat (New Tab Terminal)
+2. Run the smart contract with hardhat *(New Tab Terminal)*
 
 `/vote-system`
 
@@ -27,7 +27,7 @@ npx hardhat node
 npx hardhat --network localhost run scripts/deploy.js
 ```
 
-3. Run the frontend (New Tab Terminal)
+3. Run the frontend *(New Tab Terminal)*
 
 `/vote-system/frontend`
 
