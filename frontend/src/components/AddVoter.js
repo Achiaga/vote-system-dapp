@@ -1,10 +1,11 @@
-const AddVoter = ({ newVoter, setNewVoter, addNewVoter }) => {
+const AddVoter = ({ newVoter, setNewVoter, addNewVoter, newVoterStatus }) => {
 	const handleNewVoter = (e) => {
 		setNewVoter(e.target.value);
 	};
 	return (
 		<div>
-			<p>Give right to vote</p>
+			<h4>Give right to vote</h4>
+			<p>(only chairman can give vote right)</p>
 			<div
 				style={{
 					width: '15em',
@@ -14,6 +15,7 @@ const AddVoter = ({ newVoter, setNewVoter, addNewVoter }) => {
 				<input value={newVoter} onChange={handleNewVoter} />
 				<button onClick={addNewVoter}>Give right</button>
 			</div>
+			{newVoterStatus && <p>Status: {newVoterStatus}</p>}
 		</div>
 	);
 };

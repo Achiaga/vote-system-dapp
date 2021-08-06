@@ -15,6 +15,8 @@ import AddVoter from './AddVoter';
 export const Dapp = () => {
 	const [token, setToken] = useState();
 	const [newVoter, setNewVoter] = useState('');
+	const [newVoterStatus, setNewVoterStatus] = useState('');
+	const [voterStatus, setVoterStatus] = useState();
 	const [voterAddressToCheck, setVoterAddressToCheck] = useState('');
 	const [proposals, setProposals] = useState([]);
 	const [chairperson, setChairperson] = useState('');
@@ -68,12 +70,24 @@ export const Dapp = () => {
 
 	// Check if the address the user entered is a a voter or not
 	const checkAddressVoter = async () => {
-		console.log(await token.voters(`${voterAddressToCheck}`));
+		try {
+			const voterData = await token.voters(`${voterAddressToCheck}`);
+			setVoterStatus(voterData);
+		} catch (err) {
+			console.log(err);
+			setVoterStatus('An error has occured');
+		}
 	};
 
 	// It gives the right to vote to a new address
 	const addNewVoter = async () => {
-		await token.giveRightToVote(newVoter);
+		try {
+			await token.giveRightToVote(newVoter);
+			setNewVoterStatus('Success');
+		} catch (err) {
+			console.log(err);
+			setNewVoterStatus('An error has occured');
+		}
 	};
 
 	return (
@@ -87,11 +101,13 @@ export const Dapp = () => {
 				addNewVoter={addNewVoter}
 				setNewVoter={setNewVoter}
 				newVoter={newVoter}
+				newVoterStatus={newVoterStatus}
 			/>
 			<CheckAddressVoter
 				voterAddressToCheck={voterAddressToCheck}
 				setVoterAddressToCheck={setVoterAddressToCheck}
 				checkAddressVoter={checkAddressVoter}
+				voterStatus={voterStatus}
 			/>
 		</div>
 	);
