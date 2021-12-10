@@ -42,5 +42,3 @@ yarn start
 ```
 
 🌟 You are all set!
-
-## 🧪 Run Tests
